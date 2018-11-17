@@ -18,6 +18,8 @@
 	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
 	<string>5</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2018 Fake Copyright. All rights reserved.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MemoryType: Int {
+enum MemoryType: Int, Codable {
     
     case happy, sad
     

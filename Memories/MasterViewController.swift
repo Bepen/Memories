@@ -3,7 +3,7 @@
 //  Memories
 //
 //  Created by Bepen Neupane on 11/17/18.
-//  Copyright © 2018 Bepen Neupane. All rights reserved.
+//  Copyright © 2018 Bepen Neupane. All rights reserved. 
 //
 
 import UIKit

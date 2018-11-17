@@ -71,7 +71,6 @@
 			children = (
 				6F3812F721A0ABC3004B40AC /* Localizable */,
 				6F3812E021A0A990004B40AC /* AppDelegate.swift */,
-				6F38130321A0B758004B40AC /* BundleExtension.swift */,
 				6F3812E221A0A990004B40AC /* MasterViewController.swift */,
 				6F3812E421A0A990004B40AC /* DetailViewController.swift */,
 				6F38130721A0B825004B40AC /* AboutViewController.swift */,
@@ -94,6 +93,7 @@
 		6F3812FF21A0B565004B40AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6F38130321A0B758004B40AC /* BundleExtension.swift */,
 				6F3812E621A0A990004B40AC /* Main.storyboard */,
 				6F3812E921A0A991004B40AC /* Assets.xcassets */,
 				6F3812EB21A0A991004B40AC /* LaunchScreen.storyboard */,

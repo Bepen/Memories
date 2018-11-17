@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return documentsDir.appendingPathComponent(dataFileName, isDirectory: false)
     }()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    /*func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         loadData()
         
@@ -32,6 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let splitViewController = window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        splitViewController.delegate = self
+        
+        return true
+    }*/
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        loadData()
+        
+        let splitViewController = window!.rootViewController as! UISplitViewController
+        let detailNavController = splitViewController.viewControllers.last as! UINavigationController
+        detailNavController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        
+        let masterNavController = splitViewController.viewControllers.first as! UINavigationController
+        if let masterViewController = masterNavController.topViewController as? MasterViewController {
+            masterViewController.memories = memories
+        }
+        
         splitViewController.delegate = self
         return true
     }

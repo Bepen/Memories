@@ -16,6 +16,7 @@ class AboutViewController: UIViewController {
     @IBOutlet var appLogo: UIImageView!
     @IBOutlet var launchLabel: UILabel!
     @IBOutlet var accessLabel: UILabel!
+    @IBOutlet var button: UIButton!
     @IBOutlet var copyrightLabel: UILabel!
     
     let defaults = UserDefaults(suiteName: kAppGroupBundleID)!
@@ -24,6 +25,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         //initializes the about view with the proper bundle values
+        button.setTitle(NSLocalizedString("str_done", comment: ""), for: .normal)
         nameLabel.text = Bundle.main.displayName
         versionLabel.text = Bundle.main.version
         buildLabel.text = Bundle.main.build
@@ -36,6 +38,11 @@ class AboutViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func onButton(_ sender: Any) {
+        //dismisses the about view controler
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }

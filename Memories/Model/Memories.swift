@@ -19,15 +19,15 @@ let dNumLaunches                = "num_launches"
 struct MemoryItem: Equatable, Codable {
     var title: String
     var description: String
-    var happy: MemoryType
+    var type: MemoryType
 }
 
 class Memories: Codable {
     
     var memoryList = [MemoryItem]()
     
-    func add(title: String, description: String, happy: MemoryType) {
-        let memoryItem = MemoryItem(title: title, description: description, happy: happy)
+    func add(title: String, description: String, type: MemoryType) {
+        let memoryItem = MemoryItem(title: title, description: description, type: type)
         memoryList.insert(memoryItem, at: 0)
     }
     

@@ -9,11 +9,11 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
+    
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
     var memories: Memories!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController {
         }
         
         navigationItem.leftBarButtonItem = editButtonItem
-
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
@@ -30,24 +30,24 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @objc
     func insertNewObject(_ sender: Any) {
         insertWithAlert()
         
     }
     
-        // MARK: - Alerts
+    // MARK: - Alerts
     
     func insertWithAlert(){
         let alert = UIAlertController(title: NSLocalizedString("str_prompt", comment: ""), message: nil, preferredStyle: .alert)
@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController {
         alert.popoverPresentationController?.permittedArrowDirections = []
         alert.popoverPresentationController?.sourceView = self.view
         alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
-
+        
     }
     
     func insertWithAlertChild(title: String, desc: String){
@@ -97,10 +97,10 @@ class MasterViewController: UITableViewController {
         })
         let sadAction = UIAlertAction(title:NSLocalizedString("str_sad", comment: ""), style: .default, handler: { _ in
             self.memories.add(title: title, description: desc, type: .sad)
-            let indexPath = IndexPath(row: 0, section: 0)
+            let indexPath = IndexPath(row: 0, section: 1)
             self.tableView.insertRows(at: [indexPath], with: .automatic)
         })
-
+        
         alert2.addAction(sadAction)
         alert2.addAction(happyAction)
         self.present(alert2, animated: true, completion: nil)
@@ -121,9 +121,9 @@ class MasterViewController: UITableViewController {
         alert3.popoverPresentationController?.sourceView = self.view
         alert3.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
     }
-
+    
     // MARK: - Segues
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -135,30 +135,44 @@ class MasterViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table View
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return MemoryType.allValues.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memories.memoryList.count
+        if let type = MemoryType(rawValue: section) {
+            return memories.memories(for: type).count
+        }
+        return 0
     }
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let type = MemoryType(rawValue: section) {
+            return type.name()
+        }
+        return nil
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        let object = memories.memoryList[indexPath.row]
-        cell.textLabel!.text = object.title
+        
+        if let type = MemoryType(rawValue: indexPath.section) {
+            var typeMemories = memories.memories(for: type)
+            let mem = typeMemories[indexPath.row]
+            cell.textLabel?.text = mem.title
+            
+        }
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if(memories.memoryList.count > 1){
@@ -167,13 +181,11 @@ class MasterViewController: UITableViewController {
             } else{
                 cantDeleteAlert()
             }
-            //memories.removeItem(at: indexPath.row)
-            //tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
-
+    
+    
 }
 

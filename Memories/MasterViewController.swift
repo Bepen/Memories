@@ -46,6 +46,10 @@ class MasterViewController: UITableViewController {
         tableView.insertRows(at: [indexPath], with: .automatic)
         
     }
+    
+    func insertWithAlert(){
+        
+    }
 
     // MARK: - Segues
 

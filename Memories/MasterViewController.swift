@@ -127,7 +127,14 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = memories.memoryList[indexPath.row]
+                var object: MemoryItem?
+                if(indexPath.section == 0){
+                    let mArr = memories.memories(for: .happy)
+                    object = mArr[indexPath.row]
+                } else{
+                    let mArr = memories.memories(for: .sad)
+                    object = mArr[indexPath.row]
+                }
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.memoryItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -163,7 +170,6 @@ class MasterViewController: UITableViewController {
             var typeMemories = memories.memories(for: type)
             let mem = typeMemories[indexPath.row]
             cell.textLabel?.text = mem.title
-            
         }
         return cell
     }
@@ -176,7 +182,16 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if(memories.memoryList.count > 1){
-                self.memories.removeItem(at: indexPath.row)
+                //self.memories.removeItem(at: indexPath.row)
+                var mem: MemoryItem
+                if(indexPath.section == 0){
+                    let mArr = memories.memories(for: .happy)
+                    mem = mArr[indexPath.row]
+                } else{
+                    let mArr = memories.memories(for: .sad)
+                    mem = mArr[indexPath.row]
+                }
+                self.memories.removeItem(mem: mem)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } else{
                 cantDeleteAlert()

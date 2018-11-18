@@ -31,10 +31,8 @@ class Memories: Codable {
         memoryList.insert(memoryItem, at: 0)
     }
     
-    func removeItem(at index: Int) {
-        if let _ = memoryList[index] as MemoryItem? {
-            memoryList.remove(at: index)
-        }
+    func removeItem(mem: MemoryItem) {
+        memoryList = memoryList.filter() { $0 != mem }
     }
     
     func memories(for memoryType: MemoryType) -> [MemoryItem] {

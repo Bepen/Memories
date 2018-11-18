@@ -36,4 +36,15 @@ class Memories: Codable {
             memoryList.remove(at: index)
         }
     }
+    
+    func memories(for memoryType: MemoryType) -> [MemoryItem] {
+        
+        var typeMemories = [MemoryItem]()
+        for mem in memoryList {
+            if mem.type == memoryType {
+                typeMemories.append(mem)
+            }
+        }
+        return typeMemories
+    }
 }

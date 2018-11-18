@@ -26,11 +26,7 @@ class DetailViewController: UIViewController {
                 label.text = memory.description
             }
             if let label = happySadL {
-                if(memory.type == .happy){
-                    label.text = "Happy"
-                } else{
-                    label.text = "Sad"
-                }
+                label.text = memory.type.name()
             }
         }
     }

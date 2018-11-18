@@ -16,8 +16,8 @@ enum MemoryType: Int, Codable {
     
     func name() -> String {
         switch self {
-        case .happy:                    return "happy"
-        case .sad:                      return "sad"
+        case .happy:                    return "Happy"
+        case .sad:                      return "Sad"
         }
     }
 }

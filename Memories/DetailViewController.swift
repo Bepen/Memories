@@ -10,14 +10,27 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    @IBOutlet weak var titleL: UILabel!
+    @IBOutlet weak var descL: UILabel!
+    @IBOutlet weak var happySadL: UILabel!
+    
+    
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.description
+        if let memory = memoryItem {
+            if let label = titleL {
+                label.text = memory.title
+            }
+            if let label = descL {
+                label.text = memory.description
+            }
+            if let label = happySadL {
+                if(memory.type == .happy){
+                    label.text = "Happy"
+                } else{
+                    label.text = "Sad"
+                }
             }
         }
     }
@@ -33,7 +46,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: NSDate? {
+    var memoryItem: MemoryItem? {
         didSet {
             // Update the view.
             configureView()

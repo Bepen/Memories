@@ -39,9 +39,6 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        //memories.add(title: "Title \(count)", description: "Desc \(count)", type: .happy)
-        //let indexPath = IndexPath(row: 0, section: 0)
-        //tableView.insertRows(at: [indexPath], with: .automatic)
         insertWithAlert()
         
     }
@@ -77,6 +74,11 @@ class MasterViewController: UITableViewController {
         alert.addAction(continueAction)
         alert.addAction(UIAlertAction(title: NSLocalizedString("str_cancel", comment: ""), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
+        //iPad
+        alert.popoverPresentationController?.permittedArrowDirections = []
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
 
     }
     
@@ -96,6 +98,11 @@ class MasterViewController: UITableViewController {
         alert2.addAction(sadAction)
         alert2.addAction(happyAction)
         self.present(alert2, animated: true, completion: nil)
+        
+        //iPad
+        alert2.popoverPresentationController?.permittedArrowDirections = []
+        alert2.popoverPresentationController?.sourceView = self.view
+        alert2.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
     }
 
     // MARK: - Segues

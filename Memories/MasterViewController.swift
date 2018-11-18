@@ -17,6 +17,10 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if(memories.memoryList.count == 0){
+            memories.add(title: "Happy!!", description: "This is a default happy memory", type: .happy)
+        }
+        
         navigationItem.leftBarButtonItem = editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -42,6 +46,8 @@ class MasterViewController: UITableViewController {
         insertWithAlert()
         
     }
+    
+        // MARK: - Alerts
     
     func insertWithAlert(){
         let alert = UIAlertController(title: NSLocalizedString("str_prompt", comment: ""), message: nil, preferredStyle: .alert)
@@ -104,6 +110,17 @@ class MasterViewController: UITableViewController {
         alert2.popoverPresentationController?.sourceView = self.view
         alert2.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
     }
+    
+    func cantDeleteAlert(){
+        let alert3 = UIAlertController(title: NSLocalizedString("str_prompt3", comment: ""), message: nil, preferredStyle: .alert)
+        alert3.addAction(UIAlertAction(title: NSLocalizedString("str_okay", comment: ""), style: .default, handler: nil))
+        self.present(alert3, animated: true, completion: nil)
+        
+        //iPad
+        alert3.popoverPresentationController?.permittedArrowDirections = []
+        alert3.popoverPresentationController?.sourceView = self.view
+        alert3.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
+    }
 
     // MARK: - Segues
 
@@ -144,8 +161,14 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            memories.removeItem(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if(memories.memoryList.count > 1){
+                self.memories.removeItem(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else{
+                cantDeleteAlert()
+            }
+            //memories.removeItem(at: indexPath.row)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

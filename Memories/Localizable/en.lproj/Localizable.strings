@@ -9,3 +9,11 @@
 */
 
 "str_done"              = "Done";
+"str_prompt"            = "New memory";
+"str_prompt2"           = "What type of memory was it?";
+"str_continue"          = "Continue";
+"str_title"             = "Title";
+"str_desc"              = "Description";
+"str_happy"             = "Happy";
+"str_sad"               = "Sad";
+"str_cancel"            = "Cancel";

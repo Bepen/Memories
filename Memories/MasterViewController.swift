@@ -13,7 +13,6 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
     var memories: Memories!
-    var count = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +39,63 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        memories.add(title: "Title \(count)", description: "Desc \(count)", type: .happy)
-        count += 1
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        //memories.add(title: "Title \(count)", description: "Desc \(count)", type: .happy)
+        //let indexPath = IndexPath(row: 0, section: 0)
+        //tableView.insertRows(at: [indexPath], with: .automatic)
+        insertWithAlert()
         
     }
     
     func insertWithAlert(){
+        let alert = UIAlertController(title: NSLocalizedString("str_prompt", comment: ""), message: nil, preferredStyle: .alert)
+        var title = ""
+        var desc = ""
+        let continueAction = UIAlertAction(title:NSLocalizedString("str_continue", comment: ""), style: .default, handler: { _ in
+            if let textField = alert.textFields?.first, let titleAdd = textField.text, !titleAdd.isEmpty {
+                title = titleAdd
+            }
+            if let textField = alert.textFields?.last, let descAdd = textField.text, !descAdd.isEmpty {
+                desc = descAdd
+            }
+            self.insertWithAlertChild(title: title, desc: desc)
+        })
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = NSLocalizedString("str_title", comment: "")
+            continueAction.isEnabled = false
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { _ in
+                continueAction.isEnabled = !textField.text!.isEmpty
+            }
+        })
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = NSLocalizedString("str_desc", comment: "")
+            continueAction.isEnabled = false
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { _ in
+                continueAction.isEnabled = !textField.text!.isEmpty
+            }
+        })
         
+        alert.addAction(continueAction)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("str_cancel", comment: ""), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
+    func insertWithAlertChild(title: String, desc: String){
+        let alert2 = UIAlertController(title: NSLocalizedString("str_prompt2", comment: ""), message: nil, preferredStyle: .alert)
+        let happyAction = UIAlertAction(title:NSLocalizedString("str_happy", comment: ""), style: .default, handler: { _ in
+            self.memories.add(title: title, description: desc, type: .happy)
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+        })
+        let sadAction = UIAlertAction(title:NSLocalizedString("str_sad", comment: ""), style: .default, handler: { _ in
+            self.memories.add(title: title, description: desc, type: .sad)
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+        })
+
+        alert2.addAction(sadAction)
+        alert2.addAction(happyAction)
+        self.present(alert2, animated: true, completion: nil)
     }
 
     // MARK: - Segues

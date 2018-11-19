@@ -41,9 +41,9 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-                self.startLoc()
-                self.stopLoc()
-
+        self.startLoc()
+        self.stopLoc()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,11 +108,11 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
         let alert2 = UIAlertController(title: NSLocalizedString("str_prompt2", comment: ""), message: nil, preferredStyle: .alert)
         let happyAction = UIAlertAction(title:NSLocalizedString("str_happy", comment: ""), style: .default, handler: { _ in
             self.finalizeInsert(title: title, desc: desc, type: .happy)
-
+            
         })
         let sadAction = UIAlertAction(title:NSLocalizedString("str_sad", comment: ""), style: .default, handler: { _ in
             self.finalizeInsert(title: title, desc: desc, type: .sad)
-
+            
         })
         
         alert2.addAction(sadAction)
@@ -264,8 +264,6 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
             let coordinate = location.coordinate
             longitude = coordinate.longitude.description
             latitude = coordinate.latitude.description
-//            print(latitude)
-//            print(longitude)
         }
     }
     
@@ -273,10 +271,10 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
         switch CLLocationManager.authorizationStatus() {
         case .denied:
             locErrorAlert(title: NSLocalizedString("str_cantGetLoc", comment: ""),
-                                    message: NSLocalizedString("str_goSet", comment: ""))
+                          message: NSLocalizedString("str_goSet", comment: ""))
         case .restricted:
             locErrorAlert(title: NSLocalizedString("str_cantGetLoc", comment: ""),
-                                    message: NSLocalizedString("str_goSet", comment: ""))
+                          message: NSLocalizedString("str_goSet", comment: ""))
         default:
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()

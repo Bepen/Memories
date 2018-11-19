@@ -114,6 +114,8 @@ class MasterViewController: UITableViewController {
     func finalizeInsert(title: String, desc: String, type: MemoryType){
         let mem = MemoryItem(title: title, description: desc, type: type)
         
+        
+        
         if(memories.unique(mem: mem)){
             if (mem.type == .happy){
                 memories.add(mem: mem)
@@ -242,7 +244,6 @@ class MasterViewController: UITableViewController {
 extension MasterViewController: ColorVCDelegate { //updates holiday
     func indexUpdate(_ index: Int){
         memories.index = index
-        print("updating")
     }
 }
 

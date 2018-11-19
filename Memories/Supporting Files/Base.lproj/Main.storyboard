@@ -83,23 +83,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="str_doubleTap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQt-PC-OBJ">
-                                <rect key="frame" x="89" y="197" width="183" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="str_pinch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-D0-ylX">
-                                <rect key="frame" x="89" y="339" width="183" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OZT-Wc-ZvF">
+                                <rect key="frame" x="8" y="370.66666666666669" width="359" height="72.666666666666686"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_doubleTap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KQt-PC-OBJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="31.333333333333332"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_pinch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-D0-ylX">
+                                        <rect key="frame" x="0.0" y="41.333333333333314" width="359" height="31.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="OZT-Wc-ZvF" firstAttribute="centerX" secondItem="Vns-Ql-Z4Q" secondAttribute="centerX" id="DvY-iD-U7H"/>
+                            <constraint firstItem="OZT-Wc-ZvF" firstAttribute="centerY" secondItem="Vns-Ql-Z4Q" secondAttribute="centerY" id="I26-76-FDx"/>
+                            <constraint firstItem="OZT-Wc-ZvF" firstAttribute="leading" secondItem="cDi-XY-Jxc" secondAttribute="leading" constant="8" id="c8n-iw-8IM"/>
+                            <constraint firstItem="cDi-XY-Jxc" firstAttribute="trailing" secondItem="OZT-Wc-ZvF" secondAttribute="trailing" constant="8" id="kRt-nV-SGk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cDi-XY-Jxc"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="LT5-8h-aUm" appends="YES" id="JZj-Cl-4fh"/>

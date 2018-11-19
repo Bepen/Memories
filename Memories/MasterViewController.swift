@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, CLLocationManagerDelegate {
     
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
     var memories: Memories!
     @IBOutlet weak var colorButton: UIBarButtonItem!
+    var locationManager: CLLocationManager!
+    var latitude = "0"
+    var longitude = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,11 @@ class MasterViewController: UITableViewController {
             memories.add(title: "Happy!!", description: "This is a default happy memory", type: .happy)
         }
         
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = 1
+        locationManager.delegate = self
+        
         navigationItem.leftBarButtonItem = editButtonItem
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -31,6 +40,10 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+                self.startLoc()
+                self.stopLoc()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +58,7 @@ class MasterViewController: UITableViewController {
     
     @objc
     func insertNewObject(_ sender: Any) {
+        startLoc()
         insertWithAlert()
         
     }
@@ -115,7 +129,6 @@ class MasterViewController: UITableViewController {
         let mem = MemoryItem(title: title, description: desc, type: type)
         
         
-        
         if(memories.unique(mem: mem)){
             if (mem.type == .happy){
                 memories.add(mem: mem)
@@ -137,6 +150,8 @@ class MasterViewController: UITableViewController {
             alert3.popoverPresentationController?.sourceView = self.view
             alert3.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
         }
+        
+        stopLoc()
         
     }
     
@@ -236,6 +251,56 @@ class MasterViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+    
+    //MARK: - Location Management
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error getting location: " + error.localizedDescription)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var latitude = ""
+        var longitude = ""
+        for location in locations {
+            let coordinate = location.coordinate
+            longitude = coordinate.longitude.description
+            latitude = coordinate.latitude.description
+            print(latitude)
+            print(longitude)
+        }
+    }
+    
+    func startLoc() {
+        switch CLLocationManager.authorizationStatus() {
+        case .denied:
+            locErrorAlert(title: NSLocalizedString("str_cantGetLoc", comment: ""),
+                                    message: NSLocalizedString("str_goSet", comment: ""))
+        case .restricted:
+            locErrorAlert(title: NSLocalizedString("str_cantGetLoc", comment: ""),
+                                    message: NSLocalizedString("str_goSet", comment: ""))
+        default:
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func stopLoc() {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    
+    
+    func locErrorAlert(title: String, message: String) {
+        let alert5 = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("str_okay", comment: ""), style: .default)
+        alert5.addAction(okAction)
+        self.present(alert5, animated: true)
+        
+        //iPad
+        alert5.popoverPresentationController?.permittedArrowDirections = []
+        alert5.popoverPresentationController?.sourceView = self.view
+        alert5.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
     }
     
 }

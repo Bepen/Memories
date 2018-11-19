@@ -226,6 +226,5 @@ class MasterViewController: UITableViewController {
         }
     }
     
-    
 }
 

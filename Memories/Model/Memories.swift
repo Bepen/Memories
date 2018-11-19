@@ -30,8 +30,13 @@ class Memories: Codable {
         let memoryItem = MemoryItem(title: title, description: description, type: type)
         memoryList.insert(memoryItem, at: 0)
     }
+    
     func add(mem: MemoryItem){
         memoryList.insert(mem, at: 0)
+    }
+    
+    func add(mem: MemoryItem, destinationIndexPath: Int){
+        memoryList.insert(mem, at: destinationIndexPath)
     }
     
     func removeItem(mem: MemoryItem) {

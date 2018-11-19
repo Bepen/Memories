@@ -20,3 +20,6 @@
 "str_sad"               = "Sad";
 "str_cancel"            = "Cancel";
 "str_okay"              = "Okay";
+"str_color"             = "Color";
+"str_doubleTap"         = "Double Tap to Change Color";
+"str_pinch"             = "Pinch To Change Color";

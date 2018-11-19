@@ -25,6 +25,7 @@ struct MemoryItem: Equatable, Codable {
 class Memories: Codable {
     
     var memoryList = [MemoryItem]()
+    var index = 0
     
     func add(title: String, description: String, type: MemoryType) {
         let memoryItem = MemoryItem(title: title, description: description, type: type)

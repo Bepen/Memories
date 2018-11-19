@@ -13,10 +13,12 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
     var memories: Memories!
+    @IBOutlet weak var colorButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        colorButton.title = NSLocalizedString("str_color", comment: "")
         if(memories.memoryList.count == 0){
             memories.add(title: "Happy!!", description: "This is a default happy memory", type: .happy)
         }
@@ -166,6 +168,18 @@ class MasterViewController: UITableViewController {
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
+        if segue.identifier == "showColor" {
+//            let controller = segue.destination as! ColorViewController
+//            controller.index = memories.index
+//            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+//            controller.navigationItem.leftItemsSupplementBackButton = true
+            if let colorVC = segue.destination as? ColorViewController {
+                colorVC.delegate = self
+                colorVC.index = memories.index
+                colorVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                colorVC.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
     }
     
     // MARK: - Table View
@@ -226,5 +240,13 @@ class MasterViewController: UITableViewController {
         }
     }
     
+}
+
+// MARK: - Color Delegate
+extension MasterViewController: ColorVCDelegate { //updates holiday
+    func indexUpdate(_ index: Int){
+        memories.index = index
+        print("updating")
+    }
 }
 

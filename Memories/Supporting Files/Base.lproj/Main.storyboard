@@ -75,6 +75,54 @@
             </objects>
             <point key="canvasLocation" x="708" y="128.57142857142858"/>
         </scene>
+        <!--Color View Controller-->
+        <scene sceneID="biH-Vy-0Le">
+            <objects>
+                <viewController id="CFK-yp-OaB" customClass="ColorViewController" customModule="Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vns-Ql-Z4Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="str_doubleTap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQt-PC-OBJ">
+                                <rect key="frame" x="89" y="197" width="183" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="str_pinch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-D0-ylX">
+                                <rect key="frame" x="89" y="339" width="183" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="cDi-XY-Jxc"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LT5-8h-aUm" appends="YES" id="JZj-Cl-4fh"/>
+                            <outletCollection property="gestureRecognizers" destination="dRT-Rf-tXG" appends="YES" id="vHc-9f-Rij"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="doubleTap" destination="LT5-8h-aUm" id="Rpi-om-7OI"/>
+                        <outlet property="doubleTapL" destination="KQt-PC-OBJ" id="6RK-xf-l0L"/>
+                        <outlet property="mainView" destination="Vns-Ql-Z4Q" id="Wjy-mW-HUj"/>
+                        <outlet property="pinchL" destination="yuh-D0-ylX" id="3jy-YT-jD5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w1P-hB-ig5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LT5-8h-aUm">
+                    <connections>
+                        <action selector="onTap:" destination="CFK-yp-OaB" id="0Rb-k9-bT6"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="dRT-Rf-tXG"/>
+            </objects>
+            <point key="canvasLocation" x="1517.5999999999999" y="128.57142857142858"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
@@ -127,6 +175,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="Color" id="cL1-WQ-o5F">
+                            <connections>
+                                <segue destination="CFK-yp-OaB" kind="showDetail" identifier="showColor" id="ifB-jI-ljI"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="crn-sx-7ZW"/>
                         <barButtonItem title="?" id="VtD-aP-ZrU">
                             <connections>
@@ -138,6 +191,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="colorButton" destination="cL1-WQ-o5F" id="jUh-vQ-vHP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>

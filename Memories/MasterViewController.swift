@@ -169,10 +169,6 @@ class MasterViewController: UITableViewController {
             }
         }
         if segue.identifier == "showColor" {
-//            let controller = segue.destination as! ColorViewController
-//            controller.index = memories.index
-//            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//            controller.navigationItem.leftItemsSupplementBackButton = true
             if let colorVC = segue.destination as? ColorViewController {
                 colorVC.delegate = self
                 colorVC.index = memories.index

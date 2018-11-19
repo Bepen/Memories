@@ -110,6 +110,7 @@
                         <outlet property="doubleTap" destination="LT5-8h-aUm" id="Rpi-om-7OI"/>
                         <outlet property="doubleTapL" destination="KQt-PC-OBJ" id="6RK-xf-l0L"/>
                         <outlet property="mainView" destination="Vns-Ql-Z4Q" id="Wjy-mW-HUj"/>
+                        <outlet property="pinch" destination="dRT-Rf-tXG" id="cD2-Vw-MPc"/>
                         <outlet property="pinchL" destination="yuh-D0-ylX" id="3jy-YT-jD5"/>
                     </connections>
                 </viewController>
@@ -119,7 +120,11 @@
                         <action selector="onTap:" destination="CFK-yp-OaB" id="0Rb-k9-bT6"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pinchGestureRecognizer id="dRT-Rf-tXG"/>
+                <pinchGestureRecognizer id="dRT-Rf-tXG">
+                    <connections>
+                        <action selector="onPinch:" destination="CFK-yp-OaB" id="gDK-fw-c54"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1517.5999999999999" y="128.57142857142858"/>
         </scene>

@@ -30,6 +30,9 @@ class Memories: Codable {
         let memoryItem = MemoryItem(title: title, description: description, type: type)
         memoryList.insert(memoryItem, at: 0)
     }
+    func add(mem: MemoryItem){
+        memoryList.insert(mem, at: 0)
+    }
     
     func removeItem(mem: MemoryItem) {
         memoryList = memoryList.filter() { $0 != mem }
@@ -44,5 +47,14 @@ class Memories: Codable {
             }
         }
         return typeMemories
+    }
+    
+    func unique(mem: MemoryItem) -> Bool{
+        for memory in memoryList {
+            if (mem.title == memory.title && mem.description == memory.description && mem.type == memory.type){
+                return false
+            }
+        }
+        return true
     }
 }

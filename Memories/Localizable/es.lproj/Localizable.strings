@@ -11,7 +11,8 @@
 "str_done"              = "Terminado";
 "str_prompt"            = "Nueva memoria";
 "str_prompt2"           = "¿Qué tipo de memoria era?";
-"str_prompt3"           = "No se puede borrar la última memoria!";
+"str_prompt3"           = "¡La memoria ya existe!";
+"str_prompt4"           = "¡No se puede borrar la última memoria! Por favor crea una memoria única.";
 "str_continue"          = "Continuar";
 "str_title"             = "Título";
 "str_desc"              = "Descripción";

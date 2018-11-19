@@ -91,14 +91,12 @@ class MasterViewController: UITableViewController {
     func insertWithAlertChild(title: String, desc: String){
         let alert2 = UIAlertController(title: NSLocalizedString("str_prompt2", comment: ""), message: nil, preferredStyle: .alert)
         let happyAction = UIAlertAction(title:NSLocalizedString("str_happy", comment: ""), style: .default, handler: { _ in
-            self.memories.add(title: title, description: desc, type: .happy)
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            self.finalizeInsert(title: title, desc: desc, type: .happy)
+
         })
         let sadAction = UIAlertAction(title:NSLocalizedString("str_sad", comment: ""), style: .default, handler: { _ in
-            self.memories.add(title: title, description: desc, type: .sad)
-            let indexPath = IndexPath(row: 0, section: 1)
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            self.finalizeInsert(title: title, desc: desc, type: .sad)
+
         })
         
         alert2.addAction(sadAction)
@@ -111,15 +109,42 @@ class MasterViewController: UITableViewController {
         alert2.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
     }
     
+    func finalizeInsert(title: String, desc: String, type: MemoryType){
+        let mem = MemoryItem(title: title, description: desc, type: type)
+        
+        if(memories.unique(mem: mem)){
+            if (mem.type == .happy){
+                memories.add(mem: mem)
+                let indexPath = IndexPath(row: 0, section: 0)
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
+                
+            } else{
+                memories.add(mem: mem)
+                let indexPath = IndexPath(row: 0, section: 1)
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
+            }
+        } else{
+            let alert3 = UIAlertController(title: NSLocalizedString("str_prompt3", comment: ""), message: nil, preferredStyle: .alert)
+            alert3.addAction(UIAlertAction(title: NSLocalizedString("str_okay", comment: ""), style: .default, handler: nil))
+            self.present(alert3, animated: true, completion: nil)
+            
+            //iPad
+            alert3.popoverPresentationController?.permittedArrowDirections = []
+            alert3.popoverPresentationController?.sourceView = self.view
+            alert3.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
+        }
+        
+    }
+    
     func cantDeleteAlert(){
-        let alert3 = UIAlertController(title: NSLocalizedString("str_prompt3", comment: ""), message: nil, preferredStyle: .alert)
-        alert3.addAction(UIAlertAction(title: NSLocalizedString("str_okay", comment: ""), style: .default, handler: nil))
-        self.present(alert3, animated: true, completion: nil)
+        let alert4 = UIAlertController(title: NSLocalizedString("str_prompt4", comment: ""), message: nil, preferredStyle: .alert)
+        alert4.addAction(UIAlertAction(title: NSLocalizedString("str_okay", comment: ""), style: .default, handler: nil))
+        self.present(alert4, animated: true, completion: nil)
         
         //iPad
-        alert3.popoverPresentationController?.permittedArrowDirections = []
-        alert3.popoverPresentationController?.sourceView = self.view
-        alert3.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
+        alert4.popoverPresentationController?.permittedArrowDirections = []
+        alert4.popoverPresentationController?.sourceView = self.view
+        alert4.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
     }
     
     // MARK: - Segues

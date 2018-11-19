@@ -11,7 +11,8 @@
 "str_done"              = "Done";
 "str_prompt"            = "New memory";
 "str_prompt2"           = "What type of memory was it?";
-"str_prompt3"           = "Can't delete last memory!";
+"str_prompt3"           = "Memory already exists! Please create a unique memory.";
+"str_prompt4"           = "Can't delete last memory!";
 "str_continue"          = "Continue";
 "str_title"             = "Title";
 "str_desc"              = "Description";

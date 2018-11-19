@@ -20,6 +20,9 @@ struct MemoryItem: Equatable, Codable {
     var title: String
     var description: String
     var type: MemoryType
+    var latitude: String
+    var longitude: String
+    
 }
 
 class Memories: Codable {
@@ -27,8 +30,8 @@ class Memories: Codable {
     var memoryList = [MemoryItem]()
     var index = 0
     
-    func add(title: String, description: String, type: MemoryType) {
-        let memoryItem = MemoryItem(title: title, description: description, type: type)
+    func add(title: String, description: String, type: MemoryType, latitude: String, longitude: String) {
+        let memoryItem = MemoryItem(title: title, description: description, type: type, latitude: latitude, longitude: longitude)
         memoryList.insert(memoryItem, at: 0)
     }
     

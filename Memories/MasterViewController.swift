@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         colorButton.title = NSLocalizedString("str_color", comment: "")
         if(memories.memoryList.count == 0){
-            memories.add(title: "Happy!!", description: "This is a default happy memory", type: .happy)
+            memories.add(title: "Happy!!", description: "This is a default happy memory", type: .happy, latitude: latitude, longitude: longitude)
         }
         
         locationManager = CLLocationManager()
@@ -126,7 +126,9 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
     }
     
     func finalizeInsert(title: String, desc: String, type: MemoryType){
-        let mem = MemoryItem(title: title, description: desc, type: type)
+        let mem = MemoryItem(title: title, description: desc, type: type, latitude: latitude, longitude: longitude)
+        stopLoc()
+        print(mem.latitude)
         
         
         if(memories.unique(mem: mem)){
@@ -150,8 +152,6 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
             alert3.popoverPresentationController?.sourceView = self.view
             alert3.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX, y: self.view.frame.midY, width: 0, height: 0)
         }
-        
-        stopLoc()
         
     }
     
@@ -260,14 +260,12 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var latitude = ""
-        var longitude = ""
         for location in locations {
             let coordinate = location.coordinate
             longitude = coordinate.longitude.description
             latitude = coordinate.latitude.description
-            print(latitude)
-            print(longitude)
+//            print(latitude)
+//            print(longitude)
         }
     }
     

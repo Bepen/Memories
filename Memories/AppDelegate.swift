@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
     
     var memories: Memories!
-    var dataFileName = "MemoriesAppFile"
+    var dataFileName = "MemoriesAppFile!"
     
     let defaults = UserDefaults(suiteName: kAppGroupBundleID)!
     

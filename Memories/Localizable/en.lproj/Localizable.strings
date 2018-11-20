@@ -25,3 +25,5 @@
 "str_pinch"             = "Pinch To Change Color";
 "str_cantGetLoc"        = "Can't Get Location";
 "str_goSet"             = "Go to settings and make sure location is turned on.";
+"str_latitude"          = "Latitude";
+"str_longitude"         = "Longitude";

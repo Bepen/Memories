@@ -181,6 +181,7 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
                 }
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.memoryItem = object
+                controller.title = object?.title
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

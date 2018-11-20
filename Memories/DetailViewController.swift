@@ -10,23 +10,25 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var titleL: UILabel!
     @IBOutlet weak var descL: UILabel!
-    @IBOutlet weak var happySadL: UILabel!
+    @IBOutlet weak var latL: UILabel!
+    @IBOutlet weak var longL: UILabel!
     
     
 
     func configureView() {
         // Update the user interface for the detail item.
         if let memory = memoryItem {
-            if let label = titleL {
-                label.text = memory.title
-            }
             if let label = descL {
                 label.text = memory.description
             }
-            if let label = happySadL {
-                label.text = memory.type.name()
+            if let label = latL {
+                let lat = NSLocalizedString("str_latitude", comment: "")
+                label.text = "\(lat): \(memory.longitude)"
+            }
+            if let label = longL {
+                let long = NSLocalizedString("str_longitude", comment: "")
+                label.text = "\(long): \(memory.longitude)"
             }
         }
     }

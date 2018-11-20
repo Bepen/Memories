@@ -20,3 +20,10 @@
 "str_sad"               = "Triste";
 "str_cancel"            = "Cancelar";
 "str_okay"              = "Bueno";
+"str_color"             = "Color";
+"str_doubleTap"         = "Doble toque para cambiar el color";
+"str_pinch"             = "Pellizcar para cambiar de color";
+"str_cantGetLoc"        = "No puedo obtener la ubicación";
+"str_goSet"             = "Vaya a la configuración y asegúrese de que la ubicación esté activada.";
+"str_latitude"          = "Latitud";
+"str_longitude"         = "Longitud";

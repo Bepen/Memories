@@ -151,6 +151,37 @@
             </objects>
             <point key="canvasLocation" x="1517.5999999999999" y="128.57142857142858"/>
         </scene>
+        <!--Extra View Controller-->
+        <scene sceneID="wgh-87-7QG">
+            <objects>
+                <viewController id="eEb-50-EU8" customClass="ExtraViewController" customModule="Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fe0-OS-g97">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_extraVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBp-lP-Moz">
+                                <rect key="frame" x="5" y="396" width="365" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YBp-lP-Moz" firstAttribute="leading" secondItem="9b9-xE-ygd" secondAttribute="leading" constant="5" id="5fk-2N-AE5"/>
+                            <constraint firstItem="9b9-xE-ygd" firstAttribute="trailing" secondItem="YBp-lP-Moz" secondAttribute="trailing" constant="5" id="9tb-mE-qSh"/>
+                            <constraint firstItem="YBp-lP-Moz" firstAttribute="centerY" secondItem="Fe0-OS-g97" secondAttribute="centerY" id="EBW-Hq-ayi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9b9-xE-ygd"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="YBp-lP-Moz" id="OxJ-RR-1ZT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m2g-0b-H4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2363" y="134"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
@@ -206,6 +237,12 @@
                         <barButtonItem title="Color" id="cL1-WQ-o5F">
                             <connections>
                                 <segue destination="CFK-yp-OaB" kind="showDetail" identifier="showColor" id="ifB-jI-ljI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="lBU-e3-18u"/>
+                        <barButtonItem systemItem="stop" id="CFQ-Qv-SCC">
+                            <connections>
+                                <segue destination="eEb-50-EU8" kind="showDetail" id="Mbe-eZ-P1r"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="crn-sx-7ZW"/>

@@ -19,6 +19,7 @@
 		6F38130621A0B7B8004B40AC /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F38130521A0B7B8004B40AC /* Defaults.plist */; };
 		6F38130821A0B825004B40AC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F38130721A0B825004B40AC /* AboutViewController.swift */; };
 		6F38130C21A0C413004B40AC /* MemoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F38130B21A0C413004B40AC /* MemoryType.swift */; };
+		6F7A37C221A5705400F96791 /* ExtraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7A37C121A5705400F96791 /* ExtraViewController.swift */; };
 		6F95738621A33A4A00648BC2 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F95738521A33A4A00648BC2 /* ColorViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		6F38130521A0B7B8004B40AC /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		6F38130721A0B825004B40AC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		6F38130B21A0C413004B40AC /* MemoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryType.swift; sourceTree = "<group>"; };
+		6F7A37C121A5705400F96791 /* ExtraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewController.swift; sourceTree = "<group>"; };
 		6F95738521A33A4A00648BC2 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				6F3812E421A0A990004B40AC /* DetailViewController.swift */,
 				6F38130721A0B825004B40AC /* AboutViewController.swift */,
 				6F95738521A33A4A00648BC2 /* ColorViewController.swift */,
+				6F7A37C121A5705400F96791 /* ExtraViewController.swift */,
 				6F3812EE21A0A991004B40AC /* Info.plist */,
 				6F38130521A0B7B8004B40AC /* Defaults.plist */,
 				6F38130021A0B58C004B40AC /* Model */,
@@ -189,6 +192,7 @@
 			files = (
 				6F38130821A0B825004B40AC /* AboutViewController.swift in Sources */,
 				6F38130421A0B758004B40AC /* BundleExtension.swift in Sources */,
+				6F7A37C221A5705400F96791 /* ExtraViewController.swift in Sources */,
 				6F95738621A33A4A00648BC2 /* ColorViewController.swift in Sources */,
 				6F38130C21A0C413004B40AC /* MemoryType.swift in Sources */,
 				6F3812E521A0A990004B40AC /* DetailViewController.swift in Sources */,

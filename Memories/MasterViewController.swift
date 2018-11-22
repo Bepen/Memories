@@ -290,8 +290,12 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
     
     func locErrorAlert(title: String, message: String) {
         let alert5 = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let goToSettingsAction = UIAlertAction(title: NSLocalizedString("str_settings", comment: ""), style: .default) { _ in
+            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!)
+        }
         let okAction = UIAlertAction(title: NSLocalizedString("str_okay", comment: ""), style: .default)
         alert5.addAction(okAction)
+        alert5.addAction(goToSettingsAction)
         self.present(alert5, animated: true)
         
         //iPad

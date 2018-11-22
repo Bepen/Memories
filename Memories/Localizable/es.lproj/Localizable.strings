@@ -27,3 +27,5 @@
 "str_goSet"             = "Vaya a la configuración y asegúrese de que la ubicación esté activada.";
 "str_latitude"          = "Latitud";
 "str_longitude"         = "Longitud";
+"str_extraVC"           = "Controlador de vista extra";
+"str_settings"          = "Ajustes";

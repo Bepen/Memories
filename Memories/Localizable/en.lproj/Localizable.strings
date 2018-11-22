@@ -27,3 +27,5 @@
 "str_goSet"             = "Go to settings and make sure location is turned on.";
 "str_latitude"          = "Latitude";
 "str_longitude"         = "Longitude";
+"str_extraVC"           = "Extra View Controller";
+"str_settings"          = "Settings";

@@ -1,10 +1,8 @@
-//
-//  ExtraViewController.swift
-//  Memories
-//
-//  Created by Bepen Neupane on 11/21/18.
-//  Copyright © 2018 Bepen Neupane. All rights reserved.
-//
+/* Bepen Neupane
+ * bneupane@u.rochester.edu
+ * CSC 214 Fall 2018 - Project 3, 11/24/18
+ * I affirm that I have not given or received any unauthorized help on this assignment, and that this work is my own.
+ */
 
 import UIKit
 

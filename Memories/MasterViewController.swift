@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         colorButton.title = NSLocalizedString("str_color", comment: "")
         if(memories.memoryList.count == 0){
-            memories.add(title: "Happy!!", description: "This is a default happy memory", type: .happy, latitude: latitude, longitude: longitude)
+            memories.add(title: NSLocalizedString("str_happy!!!", comment: ""), description: NSLocalizedString("str_default", comment: ""), type: .happy, latitude: latitude, longitude: longitude)
         }
         
         locationManager = CLLocationManager()

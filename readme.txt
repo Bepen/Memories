@@ -4,7 +4,7 @@
  * I affirm that I have not given or received any unauthorized help on this assignment, and that this work is my own.
  */
 
-The project is called Memories. The app lets you store memories and categorize them as either happy or sad. The localization languages are English and Spanish. 
+The project is called Memories. The app lets you store memories and categorize them as either happy or sad. The localization languages are English and Spanish. Note: There is a default happy memory when the user first opens the app. If the scheme is Spanish, to show the translated default happy memory, you have to erase all content and settings in the simulator, then after starting it up in Spanish, you will see the translated happy memory in Spanish.. If you want to go back to english, reset it again then you will see the happy memory translated back to english.
 
 I have included the use of UserDefaults in the about screen which can be reached by pressing the '?' button. There is a launch screen and a custom icon. I use MVC design pattern. Everything is data persistent. I do not use a URLSession. Auto layout is supported. The app works properly on all iOS devices on Xcode. 
 
